@@ -163,7 +163,7 @@ void ODBCStatementImpl::addPreparator()
 	else
 		_preparations.push_back(new Preparator(*_preparations[0]));
 
-	_extractors.push_back(new Extractor(_stmt, *_preparations.back()));
+	_extractors.push_back(new Extractor(_stmt, _preparations.back()));
 }
 
 

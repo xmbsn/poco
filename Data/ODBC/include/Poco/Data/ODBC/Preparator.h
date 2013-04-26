@@ -94,6 +94,7 @@ class ODBC_API Preparator : public AbstractPreparator
 {
 public:
 	typedef std::vector<char*> CharArray;
+	typedef SharedPtr<Preparator> Ptr;
 
 	enum DataExtraction
 	{

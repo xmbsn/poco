@@ -216,13 +216,13 @@ protected:
 	virtual void bindImpl() = 0;
 		/// Binds parameters.
 
-	virtual AbstractExtractor& extractor() = 0;
+	virtual AbstractExtraction::ExtractorPtr extractor() = 0;
 		/// Returns the concrete extractor used by the statement.
 
 	const AbstractExtractionVec& extractions() const;
 		/// Returns the extractions vector.
 
-	virtual AbstractBinder& binder() = 0;
+	virtual AbstractBinding::BinderPtr binder() = 0;
 		/// Returns the concrete binder used by the statement.
 
 	std::size_t columnsExtracted(int dataSet = USE_CURRENT_DATA_SET) const;

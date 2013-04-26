@@ -31,17 +31,87 @@
 // DEALINGS IN THE SOFTWARE.
 
 
+#include "Poco/MemTrack.h"
 #include "Poco/Data/Session.h"
+#include "Poco/Data/ODBC/Connector.h"
 #include "Poco/Data/SQLite/Connector.h"
 #include <vector>
 #include <iostream>
-
 
 using namespace Poco::Data::Keywords;
 using Poco::Data::Session;
 using Poco::Data::Statement;
 
 
+struct MemTracker
+{
+	MemTracker()
+	{
+		//std::cout << std::endl << " ===== BEGIN =========================" << std::endl;
+		//MemTrack::TrackListMemoryUsage();
+	}
+
+	~MemTracker()
+	{
+		//std::cout << std::endl << " ===== END END =========================" << std::endl;
+		//MemTrack::TrackListMemoryUsage();
+	}
+};
+
+
+void printMemUse(const std::string& msg = "")
+{
+	//std::cout << std::endl << msg << std::endl;
+	MemTrack::TrackListMemoryUsage();
+}
+
+
+void doAllocLog(bool enable)
+{
+	MemTrack::MemStamp::doLog = enable;
+}
+
+
+int main(int argc, char** argv)
+{
+	{
+		//ses << "CREATE TABLE test_leak (cod INTEGER, cod_value CHARACTER VARYING)", now;
+
+		{
+			int value = 0;
+		printMemUse();
+		Session ses("ODBC", "DSN=PocoDataPgSQLTestW;UID=postgres;PWD=postgres;");
+		//Session ses("ODBC", "DRIVER=SQL Server;UID=poco;PWD=poco;DATABASE=poco;SERVER=192.168.1.27;PORT=1433;");
+		//Session ses("SQLite", "C:\\temp\\leak_test.db");
+		//ses << "CREATE TABLE test_leak_int (cod INTEGER)", now;
+		//printMemUse();
+		Statement stmt(ses);
+		
+		//stmt << "insert into test_leak(cod, cod_value) values(?, ?)", use(value), use(aa);
+		//printMemUse();
+		stmt << "insert into test_leak_int(cod) values(?)", use(value);
+		//stmt << "select count(*) from test_leak_int", into(value);
+		//Poco::Data::AbstractBinding* pBind = use(value);
+		//pBind->release();
+		
+		//stmt.addBind(pBind, false);
+		//stmt << "update test_leak_int set cod = 1";//, use(value);
+		printMemUse();
+		//doAllocLog(true);
+		stmt.execute();
+		//doAllocLog(false);
+		//printMemUse();
+		}
+		//printMemUse();
+		MemTrack::TrackListMemoryUsage();
+	}
+
+	return 0;
+}
+
+
+
+#if 0
 struct Person
 {
 	std::string name;
@@ -110,3 +180,4 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+#endif

@@ -92,32 +92,32 @@ protected:
 	void bindImpl();
 		/// Binds parameters
 
-	AbstractExtractor& extractor();
+	AbstractExtraction::ExtractorPtr extractor();
 		/// Returns the concrete extractor used by the statement.
 
-	AbstractBinder& binder();
+	AbstractBinding::BinderPtr binder();
 		/// Returns the concrete binder used by the statement.
 
 private:
-	Poco::SharedPtr<Binder>     _ptrBinder;
-	Poco::SharedPtr<Extractor>  _ptrExtractor;
-	Poco::SharedPtr<Preparator> _ptrPreparation;
-	bool                        _compiled; 
+	AbstractBinding::BinderPtr        _ptrBinder;
+	AbstractExtraction::ExtractorPtr  _ptrExtractor;
+	Poco::SharedPtr<Preparator>       _ptrPreparation;
+	bool                              _compiled; 
 };
 
 
 //
 // inlines
 //
-inline AbstractExtractor& TestStatementImpl::extractor()
+inline AbstractExtraction::ExtractorPtr TestStatementImpl::extractor()
 {
-	return *_ptrExtractor;
+	return _ptrExtractor;
 }
 
 
-inline AbstractBinder& TestStatementImpl::binder()
+inline AbstractBinding::BinderPtr TestStatementImpl::binder()
 {
-	return *_ptrBinder;
+	return _ptrBinder;
 }
 
 

@@ -572,7 +572,7 @@ private:
 			_charPtrs.resize(pos + 1, 0);
 
 		_charPtrs[pos] = (char*) std::calloc(val.size() * size, sizeof(char));
-		
+
 		std::size_t strSize;
 		std::size_t offset = 0;
 		typename C::const_iterator it = val.begin();
@@ -638,6 +638,7 @@ private:
 			_charPtrs.resize(pos + 1, 0);
 
 		_charPtrs[pos] = (char*) std::calloc(val.size() * size, sizeof(CharType));
+
 		poco_check_ptr (_charPtrs[pos]);
 
 		std::size_t blobSize;

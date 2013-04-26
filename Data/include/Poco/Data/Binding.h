@@ -106,7 +106,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		TypeHandler<T>::bind(pos, _val, getBinder(), getDirection());
 		_bound = true;
 	}
@@ -173,7 +173,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		TypeHandler<T>::bind(pos, *_pVal, getBinder(), getDirection());
 		_bound = true;
 	}
@@ -230,7 +230,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		TypeHandler<std::string>::bind(pos, _val, getBinder(), getDirection());
 		_bound = true;
 	}
@@ -287,7 +287,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		TypeHandler<std::string>::bind(pos, _val, getBinder(), getDirection());
 		_bound = true;
 	}
@@ -347,7 +347,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
@@ -411,7 +411,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
@@ -491,7 +491,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<bool>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -568,11 +568,10 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<bool>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
-
 	}
 
 	void reset()
@@ -629,7 +628,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -692,7 +691,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -756,7 +755,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -819,7 +818,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -883,7 +882,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -946,7 +945,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -1010,7 +1009,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -1073,7 +1072,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<T>::bind(pos, *_begin, getBinder(), getDirection());
 		++_begin;
@@ -1137,7 +1136,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<V>::bind(pos, _begin->second, getBinder(), getDirection());
 		++_begin;
@@ -1200,7 +1199,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<V>::bind(pos, _begin->second, getBinder(), getDirection());
 		++_begin;
@@ -1264,7 +1263,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<V>::bind(pos, _begin->second, getBinder(), getDirection());
 		++_begin;
@@ -1327,7 +1326,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		poco_assert_dbg(canBind());
 		TypeHandler<V>::bind(pos, _begin->second, getBinder(), getDirection());
 		++_begin;

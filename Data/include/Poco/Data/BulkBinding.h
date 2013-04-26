@@ -93,7 +93,7 @@ public:
 
 	void bind(std::size_t pos)
 	{
-		poco_assert_dbg(getBinder() != 0);
+		poco_assert_dbg(!getBinder().isNull());
 		TypeHandler<T>::bind(pos, _val, getBinder(), getDirection());
 		_bound = true;
 	}

@@ -41,6 +41,8 @@
 
 
 #include "Poco/Data/Data.h"
+#include "Poco/Data/AbstractPreparator.h"
+#include "Poco/SharedPtr.h"
 #include <cstddef>
 
 
@@ -48,14 +50,13 @@ namespace Poco {
 namespace Data {
 
 
-class AbstractPreparator;
-
-
 class Data_API AbstractPreparation
 	/// Interface for calling the appropriate AbstractPreparator method
 {
 public:
-	AbstractPreparation(AbstractPreparator* pPreparator);
+	typedef SharedPtr<AbstractPreparator> PreparatorPtr;
+
+	AbstractPreparation(PreparatorPtr pPreparator);
 		/// Creates the AbstractPreparation.
 
 	virtual ~AbstractPreparation();
@@ -65,17 +66,17 @@ public:
 		/// Preparations data.
 
 protected:
-	AbstractPreparator* preparation();
+	PreparatorPtr preparation();
 		/// Returns the preparation object
 
-	AbstractPreparator* _pPreparator;
+	PreparatorPtr _pPreparator;
 };
 
 
 //
 // inlines
 //
-inline AbstractPreparator* AbstractPreparation::preparation()
+inline AbstractPreparation::PreparatorPtr AbstractPreparation::preparation()
 {
 	return _pPreparator;
 }

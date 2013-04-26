@@ -64,6 +64,8 @@ class Data_API AbstractExtraction: public Poco::RefCountedObject
 	/// retrieved via an AbstractExtractor.
 {
 public:
+	typedef SharedPtr<AbstractExtractor> ExtractorPtr;
+
 	AbstractExtraction(Poco::UInt32 limit = Limit::LIMIT_UNLIMITED,
 		Poco::UInt32 position = 0, bool bulk = false);
 		/// Creates the AbstractExtraction. A limit value equal to EXTRACT_UNLIMITED (0xffffffffu) 
@@ -73,10 +75,10 @@ public:
 	virtual ~AbstractExtraction();
 		/// Destroys the AbstractExtraction.
 
-	void setExtractor(AbstractExtractor* pExtractor);
+	void setExtractor(ExtractorPtr pExtractor);
 		/// Sets the class used for extracting the data. Does not take ownership of the pointer.
 
-	AbstractExtractor* getExtractor() const;
+	ExtractorPtr getExtractor() const;
 		/// Retrieves the extractor object
 
 	Poco::UInt32 position() const;
@@ -161,12 +163,12 @@ public:
 		/// - getEmptyStringIsNull() returns true
 
 private:
-	AbstractExtractor* _pExtractor;
-	Poco::UInt32       _limit;
-	Poco::UInt32       _position;
-	bool               _bulk;
-	bool               _emptyStringIsNull;
-	bool               _forceEmptyString;
+	ExtractorPtr _pExtractor;
+	Poco::UInt32 _limit;
+	Poco::UInt32 _position;
+	bool         _bulk;
+	bool         _emptyStringIsNull;
+	bool         _forceEmptyString;
 };
 
 
@@ -182,13 +184,13 @@ typedef std::vector<AbstractExtractionLst> AbstractExtractionLstVec;
 //
 // inlines
 //
-inline void AbstractExtraction::setExtractor(AbstractExtractor* pExtractor)
+inline void AbstractExtraction::setExtractor(ExtractorPtr pExtractor)
 {
 	_pExtractor = pExtractor;
 }
 
 
-inline AbstractExtractor* AbstractExtraction::getExtractor() const
+inline AbstractExtraction::ExtractorPtr AbstractExtraction::getExtractor() const
 {
 	return _pExtractor;
 }

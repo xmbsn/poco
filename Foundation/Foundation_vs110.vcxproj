@@ -110,6 +110,9 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">PocoFoundationmd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">PocoFoundationmt</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -138,6 +141,7 @@
       <SubSystem>Console</SubSystem>
       <ImportLibrary>..\lib\PocoFoundationd.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>Enabled</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_shared|Win32'">
@@ -381,6 +385,7 @@
     </ClCompile>
     <ClCompile Include="src\Latin2Encoding.cpp" />
     <ClCompile Include="src\MemoryPool.cpp" />
+    <ClCompile Include="src\MemTrack.cpp" />
     <ClCompile Include="src\NestedDiagnosticContext.cpp" />
     <ClCompile Include="src\NumberFormatter.cpp" />
     <ClCompile Include="src\NumberParser.cpp" />
@@ -1023,6 +1028,7 @@
     <ClInclude Include="include\Poco\Latin2Encoding.h" />
     <ClInclude Include="include\Poco\ListMap.h" />
     <ClInclude Include="include\Poco\MemoryPool.h" />
+    <ClInclude Include="include\Poco\MemTrack.h" />
     <ClInclude Include="include\Poco\MetaProgramming.h" />
     <ClInclude Include="include\Poco\NamedTuple.h" />
     <ClInclude Include="include\Poco\NestedDiagnosticContext.h" />
